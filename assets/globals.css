@@ -1,0 +1,14 @@
+@media (max-width: 768px) {
+    .animate-move {
+      animation: move-to-right 0.5s ease-in-out;
+    }
+}
+  
+@keyframes move-to-right {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100%);
+    }
+}
