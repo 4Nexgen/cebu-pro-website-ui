@@ -1,6 +1,6 @@
 <template>
     <div class="mt-4 mb-16">
-        <div class="flex flex-nowrap gap-4 overflow-hidden overflow-x-hidden m-8 cursor-grab active:cursor-grabbing " @mousedown="startDrag" @mousemove="drag" @mouseup="stopDrag" @mouseleave="stopDrag">
+        <div class="flex flex-nowrap gap-4 overflow-hidden overflow-x-hidden m-8 cursor-pointer active:cursor-pointer " @mousedown="startDrag" @mousemove="drag" @mouseup="stopDrag" @mouseleave="stopDrag">
             <ServiceCategorySlot v-for="(service, index) in services" :key="index" :service="service">
             </ServiceCategorySlot>
         </div>
@@ -21,31 +21,49 @@ export default{
             services:
             [
                 {
-                    image:'/svg/flights.svg'
+                    name:'Flights',
+                    image:'/svg/flights.svg',
+                    link: '/flights'
                 },
                 {
-                    image:'/svg/international.svg'
+                    name:'International',
+                    image:'/svg/international.svg',
+                    link: '#'
                 },
                 {
-                    image:'/svg/domestic.svg'
+                    name:'Domestic',
+                    image:'/svg/domestic.svg',
+                    link: '#'
                 },
                 {
-                    image:'/svg/cruise.svg'
+                    name:'Cruises',
+                    image:'/svg/cruise.svg',
+                    link: '#'
                 },
                 {
-                    image:'/svg/domestic.svg'
+                    name:'VISA',
+                    image:'/svg/domestic.svg',
+                    link: '#'
                 },
                 {
-                    image:'/svg/insurance.svg'
+                    name:'',
+                    image:'/svg/insurance.svg',
+                    link: '#'
                 },
                 {
-                    image:'/svg/mice.svg'
+                    name:'',
+                    image:'/svg/mice.svg',
+                    link: '#'
                 },
                 {
-                    image:''
+                    name:'',
+                    image:'',
+                    link: '#'
                 },
                 {
-                    image:''
+                    name:'',
+                    image:'',
+                    link: '#'
                 },
             ],
             isDragging: false,

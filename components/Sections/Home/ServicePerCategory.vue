@@ -20,7 +20,7 @@
             </ServiceSlot>
         </div> -->
         
-        <div class="flex flex-nowrap gap-4 overflow-x-hidden m-8 cursor-grab active:cursor-grabbing" ref="scrollContainer">
+        <div class="flex flex-nowrap gap-4 overflow-x-hidden m-8 cursor-pointer active:cursor-grabbing" ref="scrollContainer">
             <ServiceSlot v-for="(service, index) in services" :key="index" :service="service">
             </ServiceSlot>
         </div>

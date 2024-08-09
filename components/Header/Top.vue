@@ -1,6 +1,6 @@
 <template>
     <div class="bg-[#1044C6] text-white ">
-        <div class="grid grid-cols-1 md:grid-cols-3 mx-16 flex-nowrap">
+        <div class="grid grid-cols-1 md:grid-cols-3 mx-16 flex-nowrap flex-nowrap xs:flex-nowrap">
             <div class="md:col-span-2 inline-flex shrink-0 text-sm">
                 <div class="flex items-center">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

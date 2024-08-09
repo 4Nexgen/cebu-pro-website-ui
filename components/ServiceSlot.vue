@@ -2,7 +2,7 @@
     <div class="m-8">
       <div class="box-border h-[40vh] w-80 border bg-center flex justify-center rounded-3xl" >
         <div class="flex flex-col w-full flex-1">
-          <div class="h-2/3 relative bg-contain bg-no-repeat bg-center" :style="{ backgroundImage: `url('/Landing/cover.png')` }">
+          <div class="h-2/3 relative bg-contain bg-no-repeat bg-center-top" :style="{ backgroundImage: `url('/Landing/cover.png')` }">
               <div class="flex justify-end p-4">
                 <a class="bg-gray-600 font-bold text-white text-sm px-2 rounded-full inline-flex ">
                   <span class="inline-block align-middle">4.3</span>
@@ -15,7 +15,7 @@
           <div class="">
             <div class="grid grid-rows-* gap-4">
               <div class="">
-                <a class="font-bold text-black text-xl px-2 rounded-full inline-flex ">
+                <a @click="$router.push('/details')" class="font-bold text-black text-xl px-2 rounded-full inline-flex cursor-pointer hover:text-blue-600">
                   Tour Name
                 </a>
               </div>
@@ -75,6 +75,8 @@ export default {
     }
   },
   methods: {
+    details(){
+    },
     prevSlide() {
       this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length
     },

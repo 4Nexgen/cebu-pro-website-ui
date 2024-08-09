@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen">
+    <div class="h-screen px-8">
         <div class="h-full background" :style="{ backgroundImage: `url('/Landing/cover.png')` }">
             <div class="grid grid-cols-2 gap-4">
                 <div class="pl-0 md:pl-64 pt-40">

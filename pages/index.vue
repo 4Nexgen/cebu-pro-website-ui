@@ -1,6 +1,7 @@
 <template>
     <div >
       <SectionsHomeCover />
+      <DialogVirtualConsulation />
       <SectionsHomeService/>
       <SectionsHomeServicePerCategory  v-for="(category, index) in categories" :key="index" :category="category"></SectionsHomeServicePerCategory>
       <SectionsHomeTestimonials />

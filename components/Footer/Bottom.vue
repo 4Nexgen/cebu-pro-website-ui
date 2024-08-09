@@ -7,7 +7,7 @@
             <div class="flex shrink justify-end w-full text-lg">
                 <div class="flex flex-row gap-16">
                     <div class="inline-flex">
-                        <a>All Rights Reserved © Copyrights 2024 CebuPro</a>&nbsp;
+                        <a class="text-sm" >All Rights Reserved © Copyrights 2024 CebuPro</a>&nbsp;
                     </div>
                 </div>
             </div>
