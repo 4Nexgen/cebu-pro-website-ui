@@ -1,20 +1,22 @@
 <template>
     <div class="h-screen px-8">
         <div class="h-full background" :style="{ backgroundImage: `url('/Landing/cover.png')` }">
-            <div class="grid grid-cols-2 gap-4">
-                <div class="pl-0 md:pl-64 pt-40">
-                    <h1 class="font-bold text-hawaian-tan text-8xl">Travel<br> with the Pros</h1>
-                    <br>
-                    <p class="text-white text-4xl">The company delivers end-to-end solutions, 
-                    encompassing development, market launch, 
-                    and operational flow.
+            <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
+                <div class="px-4 md:px-8 lg:px-16 pt-20 md:pt-32 lg:pt-40">
+                    <h1 class="font-bold text-4xl md:text-5xl lg:text-6xl xl:text-8xl text-hawaian-tan">
+                        Travel<br> with the Pros
+                    </h1>
+                    <p class="text-white text-md md:text-md lg:text-3xl xl:text-4xl mt-4 md:mt-6 lg:mt-8">
+                        The company delivers end-to-end solutions, 
+                        encompassing development, market launch, 
+                        and operational flow.
                     </p>
                 </div>
             </div>
             
             <div class="absolute bottom-0 left-0 right-0 flex justify-center mb-4">
                 <!-- <input type="text" /> -->
-                <div class="flex gap-2 bg-white items-center py-3 px-6 rounded-full w-[60vh]">
+                <div class="flex shrink gap-2 bg-white items-center py-3 px-6 rounded-full w-[60vh]">
                     <input
                         type="text" 
                         v-model="search_key" 

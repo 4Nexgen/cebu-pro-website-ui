@@ -3,7 +3,7 @@
       <SectionsHomeCover />
       <DialogVirtualConsulation />
       <SectionsHomeService/>
-      <SectionsHomeServicePerCategory  v-for="(category, index) in categories" :key="index" :category="category"></SectionsHomeServicePerCategory>
+      <SectionsHomeServicePerCategory  v-for="(category, index) in services.data" :key="index" :params="category"/>
       <SectionsHomeTestimonials />
     </div>
 </template>
@@ -14,25 +14,24 @@
 export default{
     data() { 
         return{
-            categories:
-            [
-                {
-                  category:'Exclusive Flight Group Tours'
-                },
-                {
-                  category:'Domestic Tour Packages'
-                },
-                {
-                  category:'Best Cruise Deals'
-                },
-                {
-                  category:'International Free & Easy'
-                },
-                {
-                  category:'Top City Combo Tours'
-                },
-            ],
+            services: [ ],
+            search_key:''
         }
     },
+    async mounted(){
+     await this.fetchCategories()
+    },
+    methods: {
+      async fetchCategories() {
+            try {
+                const response = await this.$axios.get(`/services`);
+                if (response.status === 200) {
+                    this.services = toRaw(response.data);
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        },
+    }
 }
 </script>

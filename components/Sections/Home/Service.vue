@@ -20,58 +20,71 @@ export default{
         return{
             services:
             [
-                {
-                    name:'Flights',
-                    image:'/svg/flights.svg',
-                    link: '/flights'
-                },
-                {
-                    name:'International',
-                    image:'/svg/international.svg',
-                    link: '#'
-                },
-                {
-                    name:'Domestic',
-                    image:'/svg/domestic.svg',
-                    link: '#'
-                },
-                {
-                    name:'Cruises',
-                    image:'/svg/cruise.svg',
-                    link: '#'
-                },
-                {
-                    name:'VISA',
-                    image:'/svg/domestic.svg',
-                    link: '#'
-                },
-                {
-                    name:'',
-                    image:'/svg/insurance.svg',
-                    link: '#'
-                },
-                {
-                    name:'',
-                    image:'/svg/mice.svg',
-                    link: '#'
-                },
-                {
-                    name:'',
-                    image:'',
-                    link: '#'
-                },
-                {
-                    name:'',
-                    image:'',
-                    link: '#'
-                },
+                // {
+                //     name:'Flights',
+                //     image:'/svg/flights.svg',
+                //     link: '/flights'
+                // },
+                // {
+                //     name:'International',
+                //     image:'/svg/international.svg',
+                //     link: '#'
+                // },
+                // {
+                //     name:'Domestic',
+                //     image:'/svg/domestic.svg',
+                //     link: '#'
+                // },
+                // {
+                //     name:'Cruises',
+                //     image:'/svg/cruise.svg',
+                //     link: '#'
+                // },
+                // {
+                //     name:'VISA',
+                //     image:'/svg/domestic.svg',
+                //     link: '#'
+                // },
+                // {
+                //     name:'',
+                //     image:'/svg/insurance.svg',
+                //     link: '#'
+                // },
+                // {
+                //     name:'',
+                //     image:'/svg/mice.svg',
+                //     link: '#'
+                // },
+                // {
+                //     name:'',
+                //     image:'',
+                //     link: '#'
+                // },
+                // {
+                //     name:'',
+                //     image:'',
+                //     link: '#'
+                // },
             ],
             isDragging: false,
             startX: 0,
             scrollLeft: 0
         }
     },
+    async mounted(){
+     await this.fetchCategories()
+    },
     methods: {
+        async fetchCategories() {
+            try {
+            const response = await this.$axios.get(`/services`);
+            if (response.status === 200) {
+                this.services = response.data.data;
+            }
+            } catch (e) {
+                console.error(e);
+            }
+        },
         startDrag(e) {
         this.isDragging = true
         this.startX = e.clientX

@@ -2,7 +2,7 @@
     <div class="m-8">
       <div class="box-border h-[40vh] w-80 border bg-center flex justify-center rounded-3xl" >
         <div class="flex flex-col w-full flex-1">
-          <div class="h-2/3 relative bg-contain bg-no-repeat bg-center-top" :style="{ backgroundImage: `url('/Landing/cover.png')` }">
+          <div class="h-2/3 relative bg-contain bg-no-repeat bg-center-top" :style="{ backgroundImage: `url('${ service.photo }')` }">
               <div class="flex justify-end p-4">
                 <a class="bg-gray-600 font-bold text-white text-sm px-2 rounded-full inline-flex ">
                   <span class="inline-block align-middle">4.3</span>
@@ -15,8 +15,9 @@
           <div class="">
             <div class="grid grid-rows-* gap-4">
               <div class="">
-                <a @click="$router.push('/details')" class="font-bold text-black text-xl px-2 rounded-full inline-flex cursor-pointer hover:text-blue-600">
-                  Tour Name
+                <a @click="$router.push(`/details/${service.id}`)" class="font-bold text-black text-xl px-2 rounded-full inline-flex cursor-pointer hover:text-blue-600">
+                  <!-- Tour Name -->
+                   {{ service.name }}
                 </a>
               </div>
               <div class="">
@@ -24,7 +25,8 @@
                 <div class="grid grid-cols-2 gap-4">  
                   <div>
                     <a class="font-bold text-gray-100 opacity-50 text-sm px-2 rounded-full inline-flex ">
-                      Locations / Country
+                      <!-- Locations / Country -->
+                       {{ service.address }}
                     </a>
                   </div>
                   <div class="flex justify-end">
@@ -40,7 +42,12 @@
                   <div>
                     
                     <a class="font-bold text-2xl px-2 rounded-full inline-flex ">
-                        <span class="text-indigo-500 !important align-middle">$25,000
+                        <span class="text-indigo-500 !important align-middle">
+                          <!-- ${{ new Intl.NumberFormat('en-US').format(service.rate.toFixed(2)) }} -->
+                          ${{ new Intl.NumberFormat('en-US').format(service.child_price) }}
+                          ${{ new Intl.NumberFormat('en-US').format(service.adult_price) }}
+                          ${{ new Intl.NumberFormat('en-US').format(service.free_time_plan_rate) }}
+                          <!-- $25,000 -->
                         </span>
                     </a>
                     <br>

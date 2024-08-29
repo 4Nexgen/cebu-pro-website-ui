@@ -4,12 +4,12 @@
             <div class="flex flex-nowrap justify-between">
                 <div> 
                     <a class="flex items-centers">
-                        <span class="font-bold text-black text-2xl px-2 rounded-full">{{ category.category }}</span> 
+                        <span class="font-bold text-black text-2xl px-2 rounded-full">{{ params?.name }}</span> 
                     </a>
                 </div>
                 <div>
-                    <a class="flex items-centers">
-                        <span class="font-bold text-sm text-blue ml-2 flex justify-end">See all</span>
+                    <a class="flex items-end" @click="handleSeeAll(params?.name) | $router.push(`/details`)">
+                        <span class="font-bold text-sm text-blue ml-2 flex justify-end hover:cursor-pointer">See all</span>
                     </a>
                 </div>
             </div>
@@ -30,79 +30,75 @@
 <script>
 export default{
     props: {
-        category: Object
+        params: {
+            type: Object,
+            default: () => ({})
+        }
     },
     data() { 
         return{
             services:
             [
                 {
-                    image:'/svg/flights.svg'
-                },
-                {
-                    image:'/svg/international.svg'
-                },
-                {
-                    image:'/svg/domestic.svg'
-                },
-                {
-                    image:'/svg/cruise.svg'
-                },
-                {
-                    image:'/svg/domestic.svg'
-                },
-                {
-                    image:'/svg/domestic.svg'
-                },
-                {
-                    image:'/svg/domestic.svg'
+                    name:'Tour Name',
+                    photo:'/Landing/cover.png',
+                    package_code:'3D2N',
+                    address:'Locations / Country',
+                    adult_price:1500,
+                    child_price:4000,
+                    free_time_plan_rate: 0
                 },
             ],
             isDragging: false,
             startX: 0,
-            scrollLeft: 0
+            scrollLeft: 0,
+            search_key:''
         }
     },
-    // methods: {
-    //     startDrag(e) {
-    //     this.isDragging = true
-    //     this.startX = e.clientX
-    //     this.scrollLeft = this.$el.querySelector('.flex').scrollLeft
-    //     },
-    //     drag(e) {
-    //     if (this.isDragging) {
-    //         const x = e.clientX
-    //         const scrollLeft = this.scrollLeft + (this.startX - x)
-    //         this.$el.querySelector('.flex').scrollLeft = scrollLeft
-    //     }
-    //     },
-    //     stopDrag() {
-    //     this.isDragging = false
-    //     }
-    // }
-    
     methods: {
+        async fetchTours(id) {
+            try {
+                let url=`/tours/${id}?search_key=${this.search_key}`
+                const response = await this.$axios.get(url);
+                if (response.status === 200) {
+                    console.log(response.data.total)
+                    if(response.data.total > 0 ){
+                        this.services = response.data.data;
+                    }
+                }
+            } catch (e) {
+            console.error(e);
+            }
+        },
+        handleSeeAll(selected_services){
+            console.log(selected_services)
+            localStorage.setItem('services',selected_services)
+        },
         startDrag(e) {
-        this.isDragging = true
-        this.startX = e.clientX
-        this.scrollLeft = this.$refs.scrollContainer.scrollLeft
+            this.isDragging = true
+            this.startX = e.clientX
+            this.scrollLeft = this.$refs.scrollContainer.scrollLeft
         },
         drag(e) {
-        if (this.isDragging) {
-            const x = e.clientX
-            const scrollLeft = this.scrollLeft + (this.startX - x)
-            this.$refs.scrollContainer.scrollLeft = scrollLeft
-        }
+            if (this.isDragging) {
+                const x = e.clientX
+                const scrollLeft = this.scrollLeft + (this.startX - x)
+                this.$refs.scrollContainer.scrollLeft = scrollLeft
+            }
         },
         stopDrag() {
         this.isDragging = false
         }
     },
-    mounted() {
+    async beforeMount() {
+        await this.fetchTours(this.params?.id)
+    },
+    async mounted() {
         this.$refs.scrollContainer.addEventListener('mousedown', this.startDrag)
         this.$refs.scrollContainer.addEventListener('mousemove', this.drag)
         this.$refs.scrollContainer.addEventListener('mouseup', this.stopDrag)
         this.$refs.scrollContainer.addEventListener('mouseleave', this.stopDrag)
+
     },
     beforeDestroy() {
         this.$refs.scrollContainer.removeEventListener('mousedown', this.startDrag)
@@ -115,6 +111,6 @@ export default{
 
 <style>
 .scrollbar::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 </style>

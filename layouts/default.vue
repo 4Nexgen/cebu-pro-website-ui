@@ -1,8 +1,8 @@
 <template>
-    <div style="background-image: url('/bg-image.png');background-size:auto;" >
+    <div style="background-image: url('/bg-image.png');background-size:contain;" >
         <HeaderTop class="fixed top-0 left-0 w-full z-50" />
         <HeaderNavigation  class="fixed top-0 left-0 w-full z-50 mt-12"/>
-        <div class="content-wrapper">
+        <div class="content-wrapper mx-16">
         <slot></slot>
         </div>
         <FooterSection />
