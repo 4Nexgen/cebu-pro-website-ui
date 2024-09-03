@@ -41,21 +41,21 @@
                 <div class="grid grid-cols-2 gap-4">
                   <div>
                     
-                    <a class="font-bold text-2xl px-2 rounded-full inline-flex ">
-                        <span class="text-indigo-500 !important align-middle">
-                          <!-- ${{ new Intl.NumberFormat('en-US').format(service.rate.toFixed(2)) }} -->
-                          ${{ new Intl.NumberFormat('en-US').format(service.child_price) }}
-                          ${{ new Intl.NumberFormat('en-US').format(service.adult_price) }}
-                          ${{ new Intl.NumberFormat('en-US').format(service.free_time_plan_rate) }}
-                          <!-- $25,000 -->
-                        </span>
-                    </a>
+                    <div class="font-bold text-2xl px-2 rounded-full inline-flex "  v-for="(rate, index) in rates" :key="index" >
+                      <a class="font-bold text-sm opacity-50 px-2 rounded-full inline-flex ">{{ rate.name }}</a><br>
+                        <span class="text-indigo-500 !important align-middle" > ${{ new Intl.NumberFormat('en-US').format(rate.rate) }}  </span>
+                    </div>
                     <br>
                     <a class="font-bold text-sm opacity-50 px-2 rounded-full inline-flex ">/person</a>
 
                   </div>
-                  <div class="flex justify-end mr-4 mb-4">
-                    <button type="button" class="rounded-full bg-indigo-500 p-4 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">BOOK NOW</button>
+                  <div class="flex justify-end mr-4 mb-4 items-center">
+                    
+                    <div>
+                      <button class="flex w-full justify-center rounded-full bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">BOOK NOW</button>
+                    </div>
+                    <!-- <button type="button" 
+                      class="rounded-full bg-indigo-500 p-4 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">BOOK NOW</button> -->
                   </div>
                 </div>
               </div>
@@ -78,10 +78,28 @@ export default {
         '/Landing/cover.png',
         '/Landing/Rectangle-699.png'
       ],
-      currentIndex: 0
+      currentIndex: 0,
+      rates: []
     }
   },
   methods: {
+    async fetchRates() {
+      try {
+        console.log('service.id',this.service.id)
+        let url=`/item-rates/${this.service.id}`;
+        console.log('url',url)
+        const response = await this.$axios.get(url);
+        if (response.status === 200) {
+            console.log('item-rates',response.data.total)
+            if(response.data.total > 0 ){
+                this.rates = response.data.data;
+            }
+        }
+        console.log('rates ', this.rates)
+      } catch (e) {
+        console.error(e);
+      }
+    },
     details(){
     },
     prevSlide() {
@@ -90,6 +108,9 @@ export default {
     nextSlide() {
       this.currentIndex = (this.currentIndex + 1) % this.images.length
     }
-  }
+  },
+  async beforeMount() {
+      await this.fetchRates()
+  },
 }
 </script>

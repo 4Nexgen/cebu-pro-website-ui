@@ -40,12 +40,12 @@ export default{
             services:
             [
                 {
-                    name:'Tour Name',
+                    name:'No Items Found',
                     photo:'/Landing/cover.png',
-                    package_code:'3D2N',
+                    package_code:'NONE',
                     address:'Locations / Country',
-                    adult_price:1500,
-                    child_price:4000,
+                    adult_price:0,
+                    child_price:0,
                     free_time_plan_rate: 0
                 },
             ],
@@ -58,7 +58,8 @@ export default{
     methods: {
         async fetchTours(id) {
             try {
-                let url=`/tours/${id}?search_key=${this.search_key}`
+                // let url=`/tours/${id}?search_key=${this.search_key}`
+                let url=`/items/${id}?search_key=${this.search_key}`;
                 const response = await this.$axios.get(url);
                 if (response.status === 200) {
                     console.log(response.data.total)

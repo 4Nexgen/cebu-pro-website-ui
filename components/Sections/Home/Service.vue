@@ -72,10 +72,10 @@ export default{
         }
     },
     async mounted(){
-     await this.fetchCategories()
+     await this.fetchServices()
     },
     methods: {
-        async fetchCategories() {
+        async fetchServices() {
             try {
             const response = await this.$axios.get(`/services`);
             if (response.status === 200) {

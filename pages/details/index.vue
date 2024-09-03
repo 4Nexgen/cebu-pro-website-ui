@@ -10,8 +10,8 @@
                   </a>
                 </div>
             </div>
-            <div class="flex flex-wrap gap-4 m-8 justify-center">
-                <ServiceSlot v-for="tour in toRaw(category.tours)" :key="tour.id" :service="tour" >
+            <div class="flex flex-wrap gap-4 m-8 justify-start">
+                <ServiceSlot v-for="tour in category.items" :key="tour.id" :service="tour" >
                 </ServiceSlot>
             </div>
         </div>
@@ -41,8 +41,8 @@ export default{
       try {
         let services = localStorage.getItem('services')
         if(services.toLowerCase() === 'tours' || services.toLowerCase === 'cruises'){
-          const response = await this.$axios.get(`/tour-by-category?search_key=${this.search_key}`)
-          console.log(response.data.data)
+          let url = `/category-with-items?search_key=${this.search_key}`;
+          const response = await this.$axios.get(url)
           if (response.status == 200) {
             this.categories = toRaw(response.data.data)
           }
@@ -51,7 +51,6 @@ export default{
         console.error(e);
       }
     },
-    
     startDrag(e) {
             this.isDragging = true
             this.startX = e.clientX
@@ -85,12 +84,6 @@ export default{
         this.$refs.scrollContainer.removeEventListener('mouseup', this.stopDrag)
         this.$refs.scrollContainer.removeEventListener('mouseleave', this.stopDrag)
   }
-  // async fetch() {
-  //   const response = await this.$axios.get(`/tour-by-category?search_key=${this.search_key}`)
-  //   if (response.status == 200) {
-  //     this.categories = response.data.data
-  //   }
-  // },
 }
 </script>
 
