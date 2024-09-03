@@ -54,8 +54,6 @@
                     <div>
                       <button class="flex w-full justify-center rounded-full bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">BOOK NOW</button>
                     </div>
-                    <!-- <button type="button" 
-                      class="rounded-full bg-indigo-500 p-4 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">BOOK NOW</button> -->
                   </div>
                 </div>
               </div>
@@ -85,17 +83,15 @@ export default {
   methods: {
     async fetchRates() {
       try {
-        console.log('service.id',this.service.id)
-        let url=`/item-rates/${this.service.id}`;
-        console.log('url',url)
-        const response = await this.$axios.get(url);
-        if (response.status === 200) {
-            console.log('item-rates',response.data.total)
-            if(response.data.total > 0 ){
-                this.rates = response.data.data;
-            }
+        if(this.service.id){
+          let url=`/item-rates/${this.service.id}`;
+          const response = await this.$axios.get(url);
+          if (response.status === 200) {
+              if(response.data.total > 0 ){
+                  this.rates = response.data.data;
+              }
+          }
         }
-        console.log('rates ', this.rates)
       } catch (e) {
         console.error(e);
       }
