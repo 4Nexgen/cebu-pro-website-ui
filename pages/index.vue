@@ -1,6 +1,6 @@
 <template>
     <div >
-      <SectionsHomeCover />
+      <SectionsHomeSearch />
       <DialogVirtualConsulation />
       <SectionsHomeService/>
       <SectionsHomeServicePerCategory  v-for="(category, index) in services.data" :key="index" :params="category"/>
