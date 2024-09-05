@@ -2,7 +2,7 @@
     <div class="px-8">
       <div class="relative">
         <div class="absolute">
-          <div class="grid lg:grid-cols-2 grid-cols-1 gap-4">
+          <div class="grid lg:grid-cols-2 grid-cols-1 gap-4 mt-24">
             <div class="px-4 md:px-8 lg:px-16 pt-1 md:pt-32 lg:pt-40">
               <h1
                 class="font-bold text-4xl md:text-5xl lg:text-6xl xl:text-8xl text-hawaian-tan"
