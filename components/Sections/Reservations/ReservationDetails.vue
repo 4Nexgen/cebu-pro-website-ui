@@ -84,7 +84,7 @@
             </div>
           </v-expansion-panel-text>
         </v-expansion-panel>
-        <SectionsReservationsPaymentMethod/>
+        <SectionsReservationsPaymentMethod />
       </v-expansion-panels>
     </div>
     <div class="row-span-3">
@@ -125,6 +125,16 @@
             </tbody>
           </v-table>
         </v-card-text>
+        <v-btn
+          :loading="loading"
+          class="flex-grow-1 mb-11"
+          width="400"
+          height="48"
+          variant="tonal"
+          @click="load"
+        >
+          Proceed
+        </v-btn>
       </v-card>
     </div>
   </div>
