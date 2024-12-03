@@ -13,6 +13,9 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
+# Copy the .env file (if you want to copy it to the build stage)
+COPY .env ./
+
 # Build the application
 RUN npm run generate
 
