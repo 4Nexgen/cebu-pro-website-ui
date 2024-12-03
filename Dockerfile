@@ -13,8 +13,11 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Copy the .env file (if you want to copy it to the build stage)
-COPY .env ./
+# Build the application
+ARG NUXT_API_URL
+
+# Set environment variable
+ENV NUXT_API_URL=${NUXT_API_URL}
 
 # Build the application
 RUN npm run generate
