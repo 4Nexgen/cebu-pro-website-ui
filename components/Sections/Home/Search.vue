@@ -1,5 +1,5 @@
 <template>
-    <div class="px-8">
+    <div class="px-8 mt-4">
       <SectionsCover></SectionsCover>
       <div class="absolute sm:-mt-60  left-0 right-0 flex justify-center mb-4">
         <!-- <input type="text" /> -->

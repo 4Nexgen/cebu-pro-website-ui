@@ -1,5 +1,6 @@
 <template>
-    <div class="flex my-4">
+    <div class=" backdrop-blur-sm">
+        <div class="flex mt-4 mx-2">
         <div class="flex-1 hidden sm:block h-16 ">
             <HeaderLeftSection />
         </div>
@@ -11,6 +12,7 @@
         <div class="flex-1 h-16 w-auto">
             <HeaderRightSection  />
         </div>
+    </div>
     </div>
 </template>
  
