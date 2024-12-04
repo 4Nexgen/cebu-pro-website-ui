@@ -1,9 +1,9 @@
-name: staging_deployment
+name: production_deployment
 
 on:
   push:
     tags:
-      - v**-staging
+      - v**-production
 
 jobs:
   build_and_deploy:
@@ -12,17 +12,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_HUB_NAMESPACE }}/staging-cebu-pro-website-ui:latest .
+        run: |
+          docker build \
+            --build-arg NUXT_API_URL=${{ secrets.NUXT_API_URL }} \
+            -t ${{ secrets.DOCKER_HUB_NAMESPACE }}/cebu-pro-website-ui:latest .
+
       - name: Push image to DockerHub
         run: |
           docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
-          docker push ${{ secrets.DOCKER_HUB_NAMESPACE }}/staging-cebu-pro-website-ui:latest
+          docker push ${{ secrets.DOCKER_HUB_NAMESPACE }}/cebu-pro-website-ui:latest
       - name: SSH to Xgame Server
         run: |
           mkdir ~/.ssh
-          echo -e "${{ secrets.STAGING_PRIVATE_KEY }}" > ~/.ssh/ssh-key
+          echo -e "${{ secrets.PRODUCTION_PRIVATE_KEY }}" > ~/.ssh/ssh-key
           chmod 400 ~/.ssh/ssh-key
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/ssh-key ${{ secrets.STAGING_USERNAME }}@${{ secrets.STAGING_HOST }} -p ${{ secrets.STAGING_SSH_PORT }} \
-            'cd ${{ secrets.STAGING_PATH }} && \
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/ssh-key ${{ secrets.PRODUCTION_USERNAME }}@${{ secrets.PRODUCTION_HOST }} -p ${{ secrets.PRODUCTION_SSH_PORT }} \
+            'cd ${{ secrets.PRODUCTION_PATH }} && \
             docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }} && \
             sh deploy_production.sh'
