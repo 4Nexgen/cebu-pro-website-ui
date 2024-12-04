@@ -1,9 +1,9 @@
-name: production_deployment
+name: staging_deployment
 
 on:
   push:
     tags:
-      - v**-production
+      - v**-staging
 
 jobs:
   build_and_deploy:
