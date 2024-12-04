@@ -18,6 +18,13 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
 
+  css: [
+    'vuetify/styles'  // Ensure Vuetify styles are included
+  ],
+  build: {
+    transpile: ['vuetify']  // Transpile Vuetify
+  },
+
   tailwindcss: {
     configPath: 'tailwind.config',
     exposeConfig: {

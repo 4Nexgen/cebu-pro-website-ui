@@ -14,6 +14,12 @@ RUN npm install
 COPY . .
 
 # Build the application
+ARG NUXT_API_URL
+
+# Set environment variable
+ENV NUXT_API_URL=${NUXT_API_URL}
+
+# Build the application
 RUN npm run generate
 
 # Use Nginx to serve the application
