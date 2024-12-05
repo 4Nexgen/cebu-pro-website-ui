@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <div
-      class="flex flex-wrap gap-2 bg-white bg-opacity-50 border-1 md:border-0 items-center py-3 px-6 rounded-3xl w-[150vh]"
-    >
+  <div class="px-4 py-6">
+    <div class="flex flex-wrap gap-2 bg-white bg-opacity-50 border-1 md:border-0 items-center py-3 px-6 rounded-3xl w-[150vh]" >
       <v-col cols="10" md="" class="bg-white">
         <v-select
           label="Room Type"
@@ -79,6 +77,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   location: "",

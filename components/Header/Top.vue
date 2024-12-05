@@ -47,7 +47,6 @@ export default {
   methods: {
     checkScreenSize() {
       this.isMobile = window.innerWidth < 768
-      console.log(this.isMobile)
     }
   }
 }

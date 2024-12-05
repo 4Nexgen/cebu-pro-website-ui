@@ -43,7 +43,7 @@
           <div class="grid grid-rows-* gap-4">
             <div class="">
               <a
-                @click="$router.push(`/details/${service.id}`)"
+                @click="$router.push(`/details/${service.item_code}`)"
                 class="font-bold text-black text-xl px-2 rounded-full inline-flex cursor-pointer hover:text-blue-600"
               >
                 <!-- Tour Name -->
@@ -95,7 +95,7 @@
                 </div>
                 <div class="flex justify-end mr-4 mb-4 items-center">
                   <div>
-                    <button
+                    <button @click="$router.push(`/reservation`)"
                       class="flex w-full justify-center rounded-full bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                       BOOK NOW
