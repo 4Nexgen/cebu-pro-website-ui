@@ -40,13 +40,13 @@ export default{
     async fetchCategories() {
       try {
         let services = localStorage.getItem('services')
-        if(services.toLowerCase() === 'tours' || services.toLowerCase === 'cruises'){
+        // if(services && ( services.toLowerCase() === 'tours' || services.toLowerCase() === 'cruises')){
           let url = `/category-with-items?search_key=${this.search_key}`;
           const response = await this.$axios.get(url)
           if (response.status == 200) {
             this.categories = toRaw(response.data.data)
           }
-        }
+        // }
       } catch (e) {
         console.error(e);
       }
