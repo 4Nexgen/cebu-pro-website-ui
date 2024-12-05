@@ -8,7 +8,7 @@
                     </a>
                 </div>
                 <div>
-                    <a class="flex items-end" @click="handleSeeAll(params?.name) | $router.push(`/${params?.name}`)">
+                    <a class="flex items-end" @click="handleSeeAll(params?.name) | $router.push(`services/${params?.name}`)">
                         <span class="font-bold text-sm text-blue ml-2 flex justify-end hover:cursor-pointer">See all</span>
                     </a>
                 </div>
