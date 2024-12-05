@@ -1,17 +1,30 @@
 <template>
-    <div class="mt-4 mb-16">
-        <div class="flex flex-nowrap gap-4 overflow-hidden overflow-x-hidden m-8 cursor-pointer active:cursor-pointer " @mousedown="startDrag" @mousemove="drag" @mouseup="stopDrag" @mouseleave="stopDrag">
-            <ServiceCategorySlot v-for="(service, index) in services" :key="index" :service="service">
-            </ServiceCategorySlot>
-        </div>
-        <div class="flex justify-center items-center">
-            <div class="bg bg-[#1044C6] h-[30vh] w-[160vh] rounded-3xl">
-                <div class="flex justify-center">
-                    <h1 class="font-bold text-white text-6xl text-center p-24">Why? CebuPro</h1>
-                </div>
-            </div>
-        </div>
+    <div class="mt-10 mb-16">
+  <!-- Horizontal Scrollable Service Categories -->
+  <div 
+    class="flex gap-4 overflow-x-auto px-4 sm:px-8 cursor-pointer active:cursor-pointer"
+    @mousedown="startDrag"
+    @mousemove="drag"
+    @mouseup="stopDrag"
+    @mouseleave="stopDrag"
+  >
+    <ServiceCategorySlot 
+      v-for="(service, index) in services" 
+      :key="index" 
+      :service="service"
+    />
+  </div>
+
+  <!-- Why CebuPro Section -->
+  <div class="flex justify-center items-center mt-8 px-4">
+    <div class="bg-[#1044C6] w-full max-w-[90vw] sm:max-w-[80vw] rounded-3xl flex justify-center items-center">
+      <h1 class="font-bold text-white text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-center px-6 py-20">
+        Why? CebuPro
+      </h1>
     </div>
+  </div>
+</div>
+
 </template>
 
 <script>
