@@ -20,7 +20,8 @@ ARG NUXT_API_URL
 ENV NUXT_API_URL=${NUXT_API_URL}
 
 # Build the application
-RUN npm run generate
+#RUN npm run generate
+RUN npm run build
 
 # Use Nginx to serve the application
 FROM nginx:alpine
