@@ -6,6 +6,7 @@
         <div class="relative z-10 bottom-0 left-0 right-0 flex  justify-center mb-4">
           <FormsFlightSearch v-show="service.toLowerCase() === 'flights'"></FormsFlightSearch>
           <FormsInquiryForm v-show="service.toLowerCase() === 'tours'"></FormsInquiryForm>
+          <FormsInsuranceForm v-show="service.toLowerCase() === 'insurance'"></FormsInsuranceForm>
         </div>
       </div>
     </div>

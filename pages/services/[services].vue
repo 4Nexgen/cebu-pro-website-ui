@@ -1,7 +1,7 @@
 <template>
     <div>
       <div >
-        <SectionsFlightsCover />
+        <SectionsServiceCover />
         <div v-for="category in categories" :key="index">
             <div class="m-8">
                 <div class="flex flex-nowrap justify-between">
@@ -14,6 +14,12 @@
                 <div class="flex flex-wrap gap-4 m-8 justify-start">
                     <ServiceSlot v-for="tour in category.items" :key="tour.id" :service="tour" >
                     </ServiceSlot>
+                </div>
+                <div class="flex flex-wrap gap-4 m-8 justify-start" v-show="service.toLowerCase() === 'flights'">
+                  <SectionsServiceFlightsNotice></SectionsServiceFlightsNotice>
+                </div>
+                <div class="flex flex-wrap gap-4 m-8 justify-start" v-show="service.toLowerCase() === 'insurance'">
+                  <SectionsServiceInsurance></SectionsServiceInsurance>
                 </div>
             </div>
         </div>
