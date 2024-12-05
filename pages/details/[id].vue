@@ -37,6 +37,21 @@ export default{
         return{
             ServiceName: "Travel to Singapore 5Days and 4Nights"
         }
+    },
+    async mounted(){
+     await this.fetchCategories()
+    },
+    methods: {
+      async fetchCategories() {
+            try {
+                const response = await this.$axios.get(`/services`);
+                if (response.status === 200) {
+                    this.services = toRaw(response.data);
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        },
     }
 }
 </script>

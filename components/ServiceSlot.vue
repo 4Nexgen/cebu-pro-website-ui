@@ -43,7 +43,7 @@
           <div class="grid grid-rows-* gap-4">
             <div class="">
               <a
-                @click="$router.push(`/details/${service.id}`)"
+                @click="$router.push(`/details/${service.item_code}`)"
                 class="font-bold text-black text-xl px-2 rounded-full inline-flex cursor-pointer hover:text-blue-600"
               >
                 <!-- Tour Name -->
@@ -57,7 +57,7 @@
                     class="font-bold text-gray-100 opacity-50 text-sm px-2 rounded-full inline-flex"
                   >
                     <!-- Locations / Country -->
-                    {{ service.address }}
+                    {{ service.location }}
                   </a>
                 </div>
                 <div class="flex justify-end">
@@ -65,7 +65,7 @@
                     class="border-2 border-indigo-500 font-bold text-sm px-2 rounded-full inline-flex mx-2"
                   >
                     <span class="inline-block text-blue align-middle"
-                      >3D2N</span
+                      >{{ service.item_code }}</span
                     >
                   </a>
                 </div>
@@ -75,12 +75,12 @@
               <div class="grid grid-cols-2 gap-4">
                 <div>
                   <div
-                    class="font-bold text-2xl px-2 rounded-full inline-flex"
+                    class="text-lg px-2 rounded-full inline-flex"
                     v-for="(rate, index) in rates"
                     :key="index"
                   >
                     <a
-                      class="font-bold text-sm opacity-50 px-2 rounded-full inline-flex"
+                      class="text-sm opacity-50 px-2 rounded-full inline-flex"
                       >{{ rate.name }}</a
                     ><br />
                     <span class="text-indigo-500 !important align-middle">
@@ -89,13 +89,13 @@
                   </div>
                   <br />
                   <a
-                    class="font-bold text-sm opacity-50 px-2 rounded-full inline-flex"
+                    class="text-sm opacity-50 px-2 rounded-full inline-flex"
                     >/person</a
                   >
                 </div>
                 <div class="flex justify-end mr-4 mb-4 items-center">
                   <div>
-                    <button
+                    <button @click="$router.push(`/reservation`)"
                       class="flex w-full justify-center rounded-full bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                       BOOK NOW
