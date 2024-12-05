@@ -1,8 +1,8 @@
 <template>
-      <div class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-500 bg-opacity-50"
+      <div class="fixed top-0 left-0 w-full min-h-full py-40 flex items-center justify-center bg-gray-500 bg-opacity-50"
           :class="{ 'hidden': !isOpen }" >
-      <div class="rounded-xl mx-48 h-100 w-30 ">
-          <div class="rounded-xl border mx-80 h-100 w-30 bg-white">
+      <div class="rounded-xl mx-48 w-30 ">
+          <div class="rounded-xl border mx-80 w-30 bg-white">
               <div class="flex flex-col m-2 mb-16">
                   <div class="flex justify-end">
                     <span class="cursor-pointer" @click="close">
