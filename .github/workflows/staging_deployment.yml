@@ -14,7 +14,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-            --build-arg NUXT_API_URL=${{ secrets.NUXT_API_URL_STAGE }} \
+            --build-arg NUXT_API_URL=${{ secrets.NUXT_API_URL }} \
             -t ${{ secrets.DOCKER_HUB_NAMESPACE }}/cebu-pro-website-ui:latest .
 
       - name: Push image to DockerHub
