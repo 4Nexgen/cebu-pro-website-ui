@@ -42,56 +42,40 @@
         <div class="">
           <div class="grid grid-rows-* gap-4">
             <div class="">
-              <a
-                @click="$router.push(`/details/${service.item_code}`)"
-                class="font-bold text-black text-xl px-2 rounded-full inline-flex cursor-pointer hover:text-blue-600"
-              >
+              <a @click="$router.push(`/details/${service.item_code}`)"
+                class="font-bold text-black text-md px-2 rounded-full inline-flex cursor-pointer hover:text-blue-600" >
                 <!-- Tour Name -->
                 {{ service.name }}
               </a>
             </div>
             <div class="">
-              <div class="grid grid-cols-2 gap-4">
+              <div class="gap-4">
                 <div>
-                  <a
-                    class="font-bold text-gray-100 opacity-50 text-sm px-2 rounded-full inline-flex"
-                  >
+                  <a class="font-bold text-gray-100 opacity-50 text-sm px-2 rounded-full inline-flex" >
                     <!-- Locations / Country -->
                     {{ service.location }}
                   </a>
                 </div>
-                <div class="flex justify-end">
-                  <a
-                    class="border-2 border-indigo-500 font-bold text-sm px-2 rounded-full inline-flex mx-2"
-                  >
-                    <span class="inline-block text-blue align-middle"
-                      >{{ service.item_code }}</span
-                    >
-                  </a>
-                </div>
+              </div>
+              
+              <div class="flex justify-end px-2">
+                <a class="border-2 border-indigo-500 font-bold text-sm px-2 rounded-full inline-flex" >
+                  <span class="inline-block text-blue align-middle" >{{ service.item_code || 'NA' }}</span >
+                </a>
               </div>
             </div>
             <div class="row-span-2">
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <div
-                    class="text-lg px-2 rounded-full inline-flex"
-                    v-for="(rate, index) in rates"
-                    :key="index"
-                  >
-                    <a
-                      class="text-sm opacity-50 px-2 rounded-full inline-flex"
-                      >{{ rate.name }}</a
-                    ><br />
-                    <span class="text-indigo-500 !important align-middle">
+                  <div class="text-lg px-2 rounded-full inline-flex" v-for="(rate, index) in rates" :key="index" >
+                    <a class="text-sm opacity-50 px-2 rounded-full inline-flex" >{{ rate.name }}&nbsp;
+                    <span class="font-bold text-black !important align-middle">
                       ${{ new Intl.NumberFormat("en-US").format(rate.rate) }}
                     </span>
+                    </a >
                   </div>
                   <br />
-                  <a
-                    class="text-sm opacity-50 px-2 rounded-full inline-flex"
-                    >/person</a
-                  >
+                  <!-- <a class="text-sm opacity-50 px-2 rounded-full inline-flex" >/person</a > -->
                 </div>
                 <div class="flex justify-end mr-4 mb-4 items-center">
                   <div>

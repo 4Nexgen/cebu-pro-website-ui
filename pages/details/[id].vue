@@ -1,9 +1,9 @@
 <template>
     <div class="border-t-2 border-gray-500">
-        <div class="mx-40 my-16">
+        <div class="mx-40">
             <div class="flex flex-wrap justify-between">
                 <div>
-                    <h1 class="font-bold" style="font-size: 42px;">{{ServiceName}}</h1>
+                    <h1 class="font-bold" style="font-size: 42px;">{{details}}</h1>
                 </div>
                 <div class="flex flex-wrap space-x-4">
                     <div>
@@ -19,14 +19,14 @@
                 </div>
             </div>
         </div>
-        <div class="mx-40">
+        <div class="mx-80">
             <SectionsDetailsImageGrid />
         </div>
-        <div class="mx-40">
+        <div class="mx-60">
             <SectionsDetailsPriceDetails />
         </div>
         <div class="mx-40">
-            <SectionsDetailsItinerary />
+            <SectionsDetailsItinerary :details="details_raw"/>
         </div>
     </div>
 </template>
@@ -35,18 +35,28 @@
 export default{
     data(){
         return{
-            ServiceName: "Travel to Singapore 5Days and 4Nights"
+            ServiceName: "Travel to Singapore 5Days and 4Nights",
+            details_raw: null,
         }
     },
     async mounted(){
      await this.fetchCategories()
     },
+    setup() {
+        const route = useRoute();
+        const code = route.params.id;
+
+        return { code };
+    },
     methods: {
       async fetchCategories() {
             try {
-                const response = await this.$axios.get(`/services`);
+                console.log(this.code)
+                const response = await this.$axios.get(`/item/details/${this.code}`);
                 if (response.status === 200) {
-                    this.services = toRaw(response.data);
+                    this.details_raw = toRaw(response.data);
+                    this.details = this.details_raw.name
+                    console.log(this.details_raw)
                 }
             } catch (e) {
                 console.error(e);
