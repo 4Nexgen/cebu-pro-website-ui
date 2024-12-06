@@ -5,7 +5,7 @@
       <div class="absolute inset-0 z-10 flex items-center">
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-4 w-full">
           <div class="px-4 md:px-8 lg:px-16 pt-1 md:pt-32 lg:pt-40">
-            <h1
+            <!-- <h1
               class="font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-hawaian-tan"
             >
               Travel<br />
@@ -16,7 +16,7 @@
             >
               The company delivers end-to-end solutions, encompassing development, 
               market launch, and operational flow.
-            </p>
+            </p> -->
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 <template>
     <div class="px-8">
-      <SectionsCover></SectionsCover>
+      <SectionsServiceHeader></SectionsServiceHeader>
       <div class="absolute bottom-0 left-0 right-0 flex flex-col justify-center mb-4">
         <!-- <input type="text" /> -->
         <div class="relative z-10 bottom-0 left-0 right-0 flex  justify-center mb-4">
@@ -13,6 +13,7 @@
   </template>
   
 <script>
+
 export default {
   data() {
     return {

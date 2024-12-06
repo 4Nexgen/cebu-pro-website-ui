@@ -33,7 +33,14 @@ import { useRoute } from 'vue-router';
 export default {
   data() { 
       return{
-        categories:[],
+        categories:[
+          {
+            name:'Exclusive Flight Group Tours'
+          },
+          {
+            name:'Best Cruise Deals'
+          },
+        ],
         search_key:''
       }
   },
@@ -52,8 +59,8 @@ export default {
           const response = await this.$axios.get(url)
           if (response.status == 200) {
             this.categories = response.data.data;
-            console.log(this.categories)
             if(this.service.toLowerCase() == 'tours'){
+              console.log(this.categories)
               this.categories = this.categories.data.filter(item => item.name.toLowerCase() !== 'flights' 
                                                                  && item.name.toLowerCase() !== 'international'
                                                                  && item.name.toLowerCase() !== 'domestic'
@@ -64,7 +71,6 @@ export default {
             }else{
               this.categories = this.categories.data.filter(item => item.name === this.service);
             }
-            console.log(this.categories)
           }
       } catch (e) {
         console.error(e);
