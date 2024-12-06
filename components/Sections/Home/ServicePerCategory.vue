@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-4 mb-4">
+    <div class="mt-4 mb-4 px-12">
         <div class="m-8">
             <div class="flex flex-nowrap justify-between">
                 <div> 
