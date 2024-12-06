@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-4 mb-4">
+    <div class="mt-4 mb-4 px-12">
         <div class="m-8">
             <div class="flex flex-nowrap justify-between">
                 <div> 
@@ -8,7 +8,7 @@
                     </a>
                 </div>
                 <div>
-                    <a class="flex items-end" @click="handleSeeAll(params?.name) | $router.push(`/${params?.name}`)">
+                    <a class="flex items-end" @click="handleSeeAll(params?.name) | $router.push(`services/${params?.name}`)">
                         <span class="font-bold text-sm text-blue ml-2 flex justify-end hover:cursor-pointer">See all</span>
                     </a>
                 </div>

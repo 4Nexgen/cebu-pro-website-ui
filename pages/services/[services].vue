@@ -1,7 +1,7 @@
 <template>
     <div>
       <div >
-        <SectionsFlightsCover />
+        <SectionsServiceCover />
         <div v-for="category in categories" :key="index">
             <div class="m-8">
                 <div class="flex flex-nowrap justify-between">
@@ -15,6 +15,12 @@
                     <ServiceSlot v-for="tour in category.items" :key="tour.id" :service="tour" >
                     </ServiceSlot>
                 </div>
+                <div class="flex flex-wrap gap-4 m-8 justify-start" v-show="service.toLowerCase() === 'flights'">
+                  <SectionsServiceFlightsNotice></SectionsServiceFlightsNotice>
+                </div>
+                <div class="flex flex-wrap gap-4 m-8 justify-start" v-show="service.toLowerCase() === 'insurance'">
+                  <SectionsServiceInsurance></SectionsServiceInsurance>
+                </div>
             </div>
         </div>
         </div>
@@ -27,7 +33,14 @@ import { useRoute } from 'vue-router';
 export default {
   data() { 
       return{
-        categories:[],
+        categories:[
+          {
+            name:'Exclusive Flight Group Tours'
+          },
+          {
+            name:'Best Cruise Deals'
+          },
+        ],
         search_key:''
       }
   },
@@ -46,8 +59,8 @@ export default {
           const response = await this.$axios.get(url)
           if (response.status == 200) {
             this.categories = response.data.data;
-            console.log(this.categories)
             if(this.service.toLowerCase() == 'tours'){
+              console.log(this.categories)
               this.categories = this.categories.data.filter(item => item.name.toLowerCase() !== 'flights' 
                                                                  && item.name.toLowerCase() !== 'international'
                                                                  && item.name.toLowerCase() !== 'domestic'
@@ -58,7 +71,6 @@ export default {
             }else{
               this.categories = this.categories.data.filter(item => item.name === this.service);
             }
-            console.log(this.categories)
           }
       } catch (e) {
         console.error(e);

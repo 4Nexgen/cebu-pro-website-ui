@@ -21,7 +21,7 @@ export default {
   }, 
   methods: {
     handleClick() {
-      this.$router.push({ path: `${this.service.name}` });
+      this.$router.push({ path: `services/${this.service.name}` });
     }
   }
 }
