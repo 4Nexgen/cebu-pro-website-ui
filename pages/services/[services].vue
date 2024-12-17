@@ -3,7 +3,7 @@
       <div >
         <SectionsServiceCover />
         <div v-for="category in categories" :key="index">
-            <div class="m-8">
+            <div class="my-8 mx-32">
                 <div class="flex flex-nowrap justify-between">
                     <div> 
                         <a class="flex items-centers">
