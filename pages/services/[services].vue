@@ -2,7 +2,7 @@
     <div>
       <div >
         <SectionsServiceCover />
-        <div v-for="category in categories" :key="index">
+        <div v-for="category in categories.data" :key="index">
             <div class="my-8 mx-32">
                 <div class="flex flex-nowrap justify-between">
                     <div> 
@@ -53,34 +53,21 @@ export default {
   methods: {
     async fetchCategories() {
       try {
-        // let services = route.params.services;
-        console.log(this.service)
-          let url = `/category-with-items?search_key=${this.search_key}`;
+          let url = `/items/by-service/${this.service}?search_key=${this.search_key}`;
+          // let url = `/category-with-items?search_key=${this.search_key}`;
           const response = await this.$axios.get(url)
           if (response.status == 200) {
             this.categories = response.data.data;
-            if(this.service.toLowerCase() == 'tours'){
-              console.log(this.categories)
-              this.categories = this.categories.data.filter(item => item.name.toLowerCase() !== 'flights' 
-                                                                 && item.name.toLowerCase() !== 'international'
-                                                                 && item.name.toLowerCase() !== 'domestic'
-                                                                 && item.name.toLowerCase() !== 'cruises'
-                                                                 && item.name.toLowerCase() !== 'visa'
-                                                                 && item.name.toLowerCase() !== 'insurance'
-                                                                 && item.name.toLowerCase() !== 'mice');
-            }else{
-              this.categories = this.categories.data.filter(item => item.name === this.service);
-            }
           }
       } catch (e) {
         console.error(e);
       }
     },
     startDrag(e) {
-            this.isDragging = true
-            this.startX = e.clientX
-            this.scrollLeft = this.$refs.scrollContainer.scrollLeft
-        },
+      this.isDragging = true
+      this.startX = e.clientX
+      this.scrollLeft = this.$refs.scrollContainer.scrollLeft
+    },
     drag(e) {
       if (this.isDragging) {
         const x = e.clientX
@@ -94,20 +81,17 @@ export default {
   },
   async mounted(){
     await this.fetchCategories()
-
-        console.log(this.service)
-
-        this.$refs.scrollContainer.addEventListener('mousedown', this.startDrag)
-        this.$refs.scrollContainer.addEventListener('mousemove', this.drag)
-        this.$refs.scrollContainer.addEventListener('mouseup', this.stopDrag)
-        this.$refs.scrollContainer.addEventListener('mouseleave', this.stopDrag)
+    this.$refs.scrollContainer.addEventListener('mousedown', this.startDrag)
+    this.$refs.scrollContainer.addEventListener('mousemove', this.drag)
+    this.$refs.scrollContainer.addEventListener('mouseup', this.stopDrag)
+    this.$refs.scrollContainer.addEventListener('mouseleave', this.stopDrag)
 
   },
   beforeDestroy() {
-        this.$refs.scrollContainer.removeEventListener('mousedown', this.startDrag)
-        this.$refs.scrollContainer.removeEventListener('mousemove', this.drag)
-        this.$refs.scrollContainer.removeEventListener('mouseup', this.stopDrag)
-        this.$refs.scrollContainer.removeEventListener('mouseleave', this.stopDrag)
+    this.$refs.scrollContainer.removeEventListener('mousedown', this.startDrag)
+    this.$refs.scrollContainer.removeEventListener('mousemove', this.drag)
+    this.$refs.scrollContainer.removeEventListener('mouseup', this.stopDrag)
+    this.$refs.scrollContainer.removeEventListener('mouseleave', this.stopDrag)
   }
 };
 </script>

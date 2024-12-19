@@ -1,12 +1,12 @@
 <template>
-    <div class="px-8 mt-4">
+    <div class="px-8 ">
       <SectionsCover></SectionsCover>
       <div class="absolute sm:-mt-60  left-0 right-0 flex justify-center mb-4">
         <!-- <input type="text" /> -->
-        <div class="search-bar flex justify-center">
+        <div class="search-bar flex justify-center ">
           <!-- <input type="text" /> -->
           <div
-            class="flex shrink gap-2 bg-white items-center py-3 px-6 rounded-full s-input"
+            class="flex shrink gap-2 bg-white items-center py-3 px-6 rounded-full s-input w-full"
           >
             <input
               type="text"
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-  </template>
+</template>
   
   <script>
   export default {
@@ -51,24 +51,30 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    width: 50%;
+    background-color: transparent;
     svg {
-      width: 20%;
+      width: 3rem; /* Adjust SVG size */
+      height: 3rem;
     }
   }
   @media screen and (max-width: 500px) {
     .s-button {
       svg {
-        width: 50%;
+        width: 1.5rem; /* Adjust SVG size */
+        height: 1.5rem;
       }
     }
     .s-input {
-      width: 75%;
+      width: 100%; /* Stretch input container */
+      z-index: 11;
     }
   }
   @media screen and (min-width: 501px) {
     .search-bar {
       margin-top: 5rem;
+      z-index: 10;
+      width: 100%; /* Full width */
+      max-width: 800px; /* Optional: limit max width for better responsiveness */
     }
   }
   </style>

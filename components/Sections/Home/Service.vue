@@ -90,7 +90,7 @@ export default{
     methods: {
         async fetchServices() {
             try {
-            const response = await this.$axios.get(`/services`);
+            const response = await this.$axios.get(`/services/front`);
             if (response.status === 200) {
                 this.services = response.data.data;
             }

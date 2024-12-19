@@ -12,7 +12,10 @@
       </div> -->
       
       <FormsFlightSearch v-show="service.toLowerCase() === 'flights'"></FormsFlightSearch>
-      <FormsInquiryForm v-show="service.toLowerCase() === 'tours'"></FormsInquiryForm>
+      <FormsInquiryForm v-show="service.toLowerCase() === 'cruises' || 
+                                service.toLowerCase() === 'domestic' ||
+                                service.toLowerCase() === 'tours' ||
+                                service.toLowerCase() === 'international'"></FormsInquiryForm>
       <FormsInsuranceForm v-show="service.toLowerCase() === 'insurance'"></FormsInsuranceForm>
     </div>
   </template>

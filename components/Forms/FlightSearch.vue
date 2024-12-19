@@ -1,11 +1,11 @@
 <template>
   <div class="p-4">
-    <div class="bg-white bg-opacity-50 border border-gray-200 p-4 rounded-3xl ">
+    <div class="bg-white bg-opacity-50 border border-gray-200 p-2 rounded-3xl ">
       <!-- Grid Container -->
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
         <!-- From Input -->
-        <div class="bg-white rounded-lg border p-4">
-          <label class="block text-sm font-medium leading-6 text-gray-900 mb-2">From</label>
+        <div class="bg-white rounded-lg border p-2">
+          <label class="block text-sm font-medium leading-6 text-gray-900">From</label>
           <input
             type="text"
             v-model="from"
@@ -14,8 +14,8 @@
         </div>
 
         <!-- To Input -->
-        <div class="bg-white rounded-lg border p-4">
-          <label class="block text-sm font-medium leading-6 text-gray-900 mb-2">To</label>
+        <div class="bg-white rounded-lg border p-2">
+          <label class="block text-sm font-medium leading-6 text-gray-900">To</label>
           <input
             type="text"
             v-model="to"
@@ -24,8 +24,8 @@
         </div>
 
         <!-- Departure Date -->
-        <div class="bg-white rounded-lg border p-4">
-          <label class="block text-sm font-medium leading-6 text-gray-900 mb-2">Departure Date</label>
+        <div class="bg-white rounded-lg border p-2">
+          <label class="block text-sm font-medium leading-6 text-gray-900">Departure Date</label>
           <input
             type="date"
             v-model="dep_date"
@@ -34,7 +34,7 @@
         </div>
 
         <!-- Round Trip Checkbox -->
-        <div class="flex items-center space-x-2 bg-white rounded-lg border p-4">
+        <div class="flex items-center space-x-2 bg-white rounded-lg border p-2">
           <input
             id="round-trip"
             name="round-trip"
@@ -45,8 +45,8 @@
         </div>
 
         <!-- Return Date -->
-        <div class="bg-white rounded-lg border p-4">
-          <label class="block text-sm font-medium leading-6 text-gray-900 mb-2">Return Date</label>
+        <div class="bg-white rounded-lg border p-2">
+          <label class="block text-sm font-medium leading-6 text-gray-900">Return Date</label>
           <input
             type="date"
             v-model="ret_date"
