@@ -1,7 +1,12 @@
+
 <template>
   <div class="px-4 py-6">
-    <div class="flex flex-wrap gap-2 bg-white bg-opacity-50 border-1 md:border-0 items-center py-3 px-6 rounded-3xl w-[150vh]" >
-      <v-col cols="10" md="" class="bg-white">
+    <!-- Grid Layout -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 bg-white bg-opacity-50 border-1 md:border-0 items-center p-2 rounded-3xl w-full"
+    >
+      <!-- Room Type -->
+      <v-col class="col-span-1 md:col-span-1 bg-white">
         <v-select
           label="Room Type"
           :items="[
@@ -14,7 +19,9 @@
           ]"
         ></v-select>
       </v-col>
-      <v-col cols="10" md="" class="bg-white">
+
+      <!-- Bedroom -->
+      <v-col class="col-span-1 md:col-span-1 bg-white">
         <v-select
           label="Bedroom"
           :items="[
@@ -27,39 +34,39 @@
           ]"
         ></v-select>
       </v-col>
-      <v-col
-        cols="10"
-        md=""
-        class="bg-white rounded-lg border m-4 w-full md:w-[20vh]"
-      >
+
+      <!-- Start Date -->
+      <v-col class="col-span-1 md:col-span-1 bg-white rounded-lg border p-4">
         <label
-          for="last-name"
-          class="block text-sm font-medium leading-6 text-gray-900 ml-4"
+          for="start-date"
+          class="block text-sm font-medium leading-6 text-gray-900 "
           >Start Date</label
         >
         <input
+          id="start-date"
           type="date"
           v-model="str_date"
-          class="font-bold text-blue-400 block w-40 rounded-md border-0 py-1.5 text-gray-900 ml-2 shadow-sm px-2 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+          class="font-bold text-blue-400 block w-full rounded-md border py-2 px-3 shadow-sm placeholder:text-gray-400 sm:text-sm"
         />
       </v-col>
-      <v-col
-        cols="10"
-        md=""
-        class="bg-white rounded-lg border m-4 w-full md:w-[20vh]"
-      >
+
+      <!-- End Date -->
+      <v-col class="col-span-1 md:col-span-1 bg-white rounded-lg border p-4">
         <label
-          for="last-name"
-          class="block text-sm font-medium leading-6 text-gray-900 ml-4"
+          for="end-date"
+          class="block text-sm font-medium leading-6 text-gray-900 "
           >End Date</label
         >
         <input
+          id="end-date"
           type="date"
           v-model="end_date"
-          class="font-bold text-blue-400 block w-40 rounded-md border-0 py-1.5 text-gray-900 ml-2 shadow-sm px-2 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+          class="font-bold text-blue-400 block w-full rounded-md border py-2 px-3 shadow-sm placeholder:text-gray-400 sm:text-sm"
         />
       </v-col>
-      <v-col cols="10" md="">
+
+      <!-- Location -->
+      <v-col class="col-span-1 md:col-span-1 bg-white">
         <v-text-field
           v-model="location"
           :counter="10"
@@ -69,14 +76,18 @@
           required
         ></v-text-field>
       </v-col>
-      <v-col cols="10" md="">
-        <div class="sm:col-span-3">
-                <button type="button" class="rounded-2xl bg-indigo-600 p-6 text-sm font-semibold text-white shadow-sm">Search Hotel</button>
-            </div>
+
+      <!-- Button -->
+      <v-col class="col-span-1 md:col-span-1 text-center">
+        <button type="button"
+          class="rounded-2xl bg-indigo-600 py-4 px-4 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500" >
+          Search Hotel
+        </button>
       </v-col>
     </div>
   </div>
 </template>
+
 
 <script>
 export default {

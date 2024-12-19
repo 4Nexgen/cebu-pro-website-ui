@@ -1,8 +1,6 @@
 <template>
-  <div class="m-8">
-    <div
-      class="box-border w-80 border bg-center flex justify-center rounded-3xl"
-    >
+  <div class="m-4 ">
+    <div class="box-border w-80 border bg-center flex justify-center rounded-3xl" >
       <div class="flex flex-col w-full flex-1">
         <div class="h-2/3 relative bg-contain bg-no-repeat bg-center-top">
           <div class="absolute right-0 p-4" style="z-index: 9">

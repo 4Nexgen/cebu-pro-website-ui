@@ -23,7 +23,7 @@
 
       <!-- Image Section -->
       <div class="home-img relative z-0">
-        <img src="/Landing/cover.png" alt="Cover Image" class="w-full h-auto object-cover" />
+        <img src="/Landing/cover.png" alt="Cover Image" class="w-full h-auto object-contain" />
       </div>
     </div>
   </div>

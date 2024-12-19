@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div class="content">
       <SectionsHomeSearch />
       <DialogVirtualConsulation />
       <SectionsHomeService/>
@@ -7,8 +7,6 @@
       <SectionsHomeTestimonials />
     </div>
 </template>
-  
-
 
 <script>
 export default{
@@ -24,7 +22,7 @@ export default{
     methods: {
       async fetchCategories() {
             try {
-                const response = await this.$axios.get(`/services`);
+                const response = await this.$axios.get(`/services/front`);
                 if (response.status === 200) {
                     this.services = toRaw(response.data);
                 }
@@ -35,3 +33,9 @@ export default{
     }
 }
 </script>
+
+<style>
+.content {
+  padding-top: 110px;
+}
+</style>

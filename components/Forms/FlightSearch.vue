@@ -1,38 +1,70 @@
 <template>
-    <div>
-        <div class="flex flex-wrap gap-2 bg-white bg-opacity-50 border-1 md:border-0 items-center py-3 px-6 rounded-3xl w-[150vh]">
-                <div class="m-4 w-full md:w-[25vh] bg-white rounded-lg border">
-                    <label class="block text-sm font-medium leading-6 text-gray-900 ml-4">From</label>
-                    <input type="text" v-model="from"
-                    class="font-bold text-blue-400 block w-full rounded-md py-1.5 text-gray-900 shadow-sm px-2 ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
-                </div>
-
-                <div class="m-4 w-full md:w-[25vh] bg-white rounded-lg border">
-                    <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900 ml-4">To</label>
-                    <input type="text" v-model="to"
-                    class="font-bold text-blue-400 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm px-2 placeholder:text-gray-400 sm:text-sm sm:leading-6">
-                </div>
-            
-                <div class="m-4 w-full md:w-[20vh] bg-white rounded-lg border">
-                    <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900 ml-4">Departure Date</label>
-                    <input type="date" v-model="dep_date"
-                    class="font-bold text-blue-400 block w-40 rounded-md py-1.5 text-gray-900 ml-2 shadow-sm ml-2 px-2 placeholder:text-gray-400 sm:text-sm sm:leading-6">
-                </div>
-                <div class="m-4 flex h-6 items-center">
-                    <input id="comments" name="comments" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" /> &nbsp;
-                    <label for="comments" class="font-medium text-gray-900">Round trip</label>
-                </div>
-                <div class="m-4 w-full md:w-[20vh] bg-white rounded-lg border">
-                    <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900 ml-4">Return Date</label>
-                    <input type="date" v-model="ret_date"
-                    class="font-bold text-blue-400 block w-40 rounded-md border-0 py-1.5 text-gray-900 ml-2 shadow-sm px-2 placeholder:text-gray-400 sm:text-sm sm:leading-6">
-                </div>
-            <div class="sm:col-span-3">
-                <button type="button" class="rounded-2xl bg-indigo-600 p-6 text-sm font-semibold text-white shadow-sm">Search Flights</button>
-            </div>
+  <div class="p-4">
+    <div class="bg-white bg-opacity-50 border border-gray-200 p-2 rounded-3xl ">
+      <!-- Grid Container -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+        <!-- From Input -->
+        <div class="bg-white rounded-lg border p-2">
+          <label class="block text-sm font-medium leading-6 text-gray-900">From</label>
+          <input
+            type="text"
+            v-model="from"
+            class="font-bold text-blue-400 block w-full rounded-md py-2 px-3 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm"
+          />
         </div>
-        
+
+        <!-- To Input -->
+        <div class="bg-white rounded-lg border p-2">
+          <label class="block text-sm font-medium leading-6 text-gray-900">To</label>
+          <input
+            type="text"
+            v-model="to"
+            class="font-bold text-blue-400 block w-full rounded-md py-2 px-3 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm"
+          />
+        </div>
+
+        <!-- Departure Date -->
+        <div class="bg-white rounded-lg border p-2">
+          <label class="block text-sm font-medium leading-6 text-gray-900">Departure Date</label>
+          <input
+            type="date"
+            v-model="dep_date"
+            class="font-bold text-blue-400 block w-full rounded-md py-2 px-3 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm"
+          />
+        </div>
+
+        <!-- Round Trip Checkbox -->
+        <div class="flex items-center space-x-2 bg-white rounded-lg border p-2">
+          <input
+            id="round-trip"
+            name="round-trip"
+            type="checkbox"
+            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+          />
+          <label for="round-trip" class="text-sm font-medium text-gray-900">Round Trip</label>
+        </div>
+
+        <!-- Return Date -->
+        <div class="bg-white rounded-lg border p-2">
+          <label class="block text-sm font-medium leading-6 text-gray-900">Return Date</label>
+          <input
+            type="date"
+            v-model="ret_date"
+            class="font-bold text-blue-400 block w-full rounded-md py-2 px-3 text-gray-900 shadow-sm placeholder:text-gray-400 sm:text-sm"
+          />
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <!-- <div class="text-center mt-6">
+        <button type="button"
+          class="rounded-2xl bg-indigo-600 py-8 px-6 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+        >
+          Search Flights
+        </button>
+      </div> -->
     </div>
+  </div>
 </template>
 
 
